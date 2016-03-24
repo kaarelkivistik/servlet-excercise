@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app
+        version="3.0"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Archetype Created Web Application</display-name>
+    
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>ee.kaarelkivistik.cars.HelloServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CarServlet</servlet-name>
+        <servlet-class>ee.kaarelkivistik.cars.CarServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CarServiceServlet</servlet-name>
+        <servlet-class>ee.kaarelkivistik.cars.CarServiceServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>LogServlet</servlet-name>
+        <servlet-class>ee.kaarelkivistik.cars.LogServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CarServlet</servlet-name>
+        <url-pattern>/s</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CarServiceServlet</servlet-name>
+        <url-pattern>/carservice</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>LogServlet</servlet-name>
+        <url-pattern>/log</url-pattern>
+    </servlet-mapping>
+</web-app>
