@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cars</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Cars</h1>
+
+<p>REST endpoint is <a href="/">here</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.id}"></td>
+        <td th:text="${car.brand}"></td>
+        <td th:text="${car.model}"></td>
+        <td th:text="${car.year}"></td>
+        <th><a th:href="${'/ui/car/' + car.id}">Edit</a></th>
+    </tr>
+    </tbody>
+</table>
+
+<hr/>
+<a href="/ui/car">Another one</a>
+
+</body>
+</html>

@@ -1,47 +1,45 @@
 package ee.kaarelkivistik.cars;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+
+import javax.annotation.Nullable;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by kaarel on 23.03.16.
  */
+
+@Entity
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @NotNull
+    @Length(min = 3, max = 20, message = "Brand name length must be between 3 and 20 characters.")
     private String brand;
+
     private String model;
+
+    @NotNull
+    @Range(min = 2000, max = 2016, message = "Year must be between 2000 and 2016.")
     private int year;
+
+    @NotNull
+    @Length(min = 10, message = "Review must be at least 10 characters long.")
     private String review;
+
+    protected Car() {}
 
     public Car(String brand, String model, int year, String review) {
         this.brand = brand;
         this.model = model;
         this.year = year;
         this.review = review;
-    }
-
-    public Car(int id, String brand, String model, int year, String review) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
-        this.review = review;
-    }
-
-    public Car(String id, String brand, String model, String year, String review) {
-        this.id = Integer.parseInt(id);
-        this.brand = brand;
-        this.model = model;
-        this.year = Integer.parseInt(year);
-        this.review = review;
-    }
-
-    public Car(ResultSet resultSet) throws SQLException {
-        id = resultSet.getInt("id");
-        brand = resultSet.getString("brand");
-        model = resultSet.getString("model");
-        year = resultSet.getInt("year");
-        review = resultSet.getString("review");
     }
 
     public int getId() {
@@ -85,27 +83,13 @@ public class Car {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Car car = (Car) o;
-
-        if (id != car.id) return false;
-        if (year != car.year) return false;
-        if (!brand.equals(car.brand)) return false;
-        if (!model.equals(car.model)) return false;
-        return review.equals(car.review);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + brand.hashCode();
-        result = 31 * result + model.hashCode();
-        result = 31 * result + year;
-        result = 31 * result + review.hashCode();
-        return result;
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", review='" + review + '\'' +
+                '}';
     }
 }
